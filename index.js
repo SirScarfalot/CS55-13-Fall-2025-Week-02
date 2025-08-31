@@ -3,22 +3,19 @@ const http_pkg = require("http");
 const filesys = require("fs").promises;
 
 const requestor = function(requested, responded){
+  function responso(pagin, typey) {
+  responded.setHeader("Content-Type", typey + "; charset=UTF-8");
+  responded.writeHead(200);
+  responded.end(pagin);
+    }
     console.log(requested.url);
     if (requested.url === '/'){
       filesys.readFile(__dirname + "/links.html").then(
-        da_page => {
-          responded.setHeader("Content-Type", "text/html; charset=UTF-8");
-          responded.writeHead(200);
-          responded.end(da_page);
-        }
+        responso(pagin, "text/plain")
       );
     } else {
       filesys.readFile(__dirname + "/stuff.json").then(
-        da_page => {
-          responded.setHeader("Content-Type", "application/json; charset=UTF-8");
-          responded.writeHead(200);
-          responded.end(da_page);
-        }
+        responso(pagin, "application/json")
       );
     }
   };
