@@ -1,0 +1,14 @@
+[
+  {
+    "string":"Newegg!!",
+    "target":"https://www.newegg.com"
+  },
+  {
+    "string":"My server!!",
+    "target":"https://cognigraph.com/"
+  },
+  {
+    "string":"GROCERIES :D",
+    "target":"https://www.safeway.com/"
+  }
+]

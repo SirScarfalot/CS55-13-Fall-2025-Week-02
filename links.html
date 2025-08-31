@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Week 2 Homework</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="much_stuff"></div>
+    <script data-type="module" data-presets="react" type="text/babel">
+      "use strict";
+
+      import React from 'https://cdn.jsdelivr.net/npm/react@19.1.1/+esm';
+      import {createRoot} from 'https://cdn.jsdelivr.net/npm/react-dom@19.1.1/client/+esm';
+
+      function StuffList(items){
+        return <div>
+            <ol>
+              {
+                items.list.map(
+                  (thing, spot) => (
+                    <li key={spot}>
+                      <a href={thing.target}>
+                        {thing.string}
+                      </a>
+                    </li>
+                  )
+                )
+              }
+            </ol>
+          </div>;
+      }
+
+      $.getJSON("s",
+        function(Stuff_Gotten){
+          const theSpot = document.getElementById('much_stuff');
+          const glue = createRoot(theSpot);
+          glue.render(
+            <StuffList list={Stuff_Gotten} />
+          );
+        }
+      );
+
+    </script>
+  </body>
+</html>
